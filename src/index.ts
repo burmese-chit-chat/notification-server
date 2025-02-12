@@ -5,6 +5,7 @@ import { Request, Response } from "express";
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import { setupSocket } from "./helpers/socket-handler";
+import notification_routes from "./routes/notifications";
 require("dotenv").config();
 
 const PORT: Readonly<number> = 8004;
@@ -26,6 +27,7 @@ app.get("/", (req: Request, res: Response) => {
     console.log("path", req.path);
     res.send("hello world from burmese chit chat NOTIFICATION service");
 });
+app.use('/notifications', notification_routes);
 
 
 const server = http.createServer(app);

@@ -27,6 +27,11 @@ app.get("/", (req: Request, res: Response) => {
     console.log("path", req.path);
     res.send("hello world from burmese chit chat NOTIFICATION service");
 });
+
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 app.use('/notifications', notification_routes);
 
 

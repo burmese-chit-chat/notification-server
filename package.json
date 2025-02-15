@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "npx nodemon"
+    "dev": "npx nodemon", 
+    "cleanup" : "node dist/scripts/cleanup-notifications.js"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",

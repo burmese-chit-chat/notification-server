@@ -17,14 +17,14 @@ export const setupSocket = (io: Server) => {
             try {
                 const receiver_user_id = data.receiver_id;
                 const receiver_socket_id = userSocketMap.get(receiver_user_id);
-                const notification = new Notification({
-                    sender_id : data.sender_id, 
-                    receiver_id : data.receiver_id, 
-                    title : data.title, 
-                    body : data.body
-                })
-                await notification.save();
-                if (receiver_socket_id) io.to(receiver_socket_id).emit("received_notification", { title : data.title, body : data.body });
+                // const notification = new Notification({
+                //     sender_id : data.sender_id, 
+                //     receiver_id : data.receiver_id, 
+                //     title : data.title, 
+                //     body : data.body
+                // })
+                // await notification.save();
+                if (receiver_socket_id) io.to(receiver_socket_id).emit("received_notification", { title : data.title, body : data.body, sender_id : data.sender_id, receiver_id : data.receiver_id });
             } catch (e) {
                 console.log(e);
             }
